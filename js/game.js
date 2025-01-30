@@ -70,6 +70,18 @@ function minesAroundCount(board, rowIdx, colIdx) {
 
 function onCellClicked(elCell, i, j) {
 
+    if (!gGame.isOn) return
+
+    const cell = gBoard[i][j]
+
+    if (!cell.isCovered || cell.isMarked) return
+
+    cell.isCovered = false
+
+    elCell.innerHTML = cell.isMIne ? BOMB : cell.minesAroundCount || FLOOR
+
+
+
 }
 
 function onCellMarked(elCell) {

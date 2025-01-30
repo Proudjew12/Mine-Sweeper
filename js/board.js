@@ -2,6 +2,7 @@
 
 var FLOOR = '🔲'
 
+
 function buildBoard() {
     const size = 4
     const board = []
@@ -36,8 +37,9 @@ function renderBoard(board) {
             } else {
                 cellContent = cell
             }
+            if (cellContent === 0) cellContent = FLOOR
 
-            strHTML += `<td class="${className}">${cellContent}</td>`
+            strHTML += `<td class="${className}" onclick="onCellClicked(this, ${i}, ${j})">${cellContent}</td>`
 
         }
         strHTML += '</tr>'
