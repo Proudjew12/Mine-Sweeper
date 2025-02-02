@@ -13,17 +13,17 @@ function buildBoard() {
             board[i][j] = FLOOR
         }
     }
-    board[1][1] = BOMB
-    board[1][2] = BOMB
+    // board[1][1] = BOMB
+    // board[1][2] = BOMB
 
 
-    // for (let i = 0; i < gLevel.MINES; i++) {
+    for (let i = 0; i < gLevel.MINES; i++) {
 
-    //     var randI = getRandomInt(0, size)
-    //     var randJ = getRandomInt(0, size)
-    //     board[randI][randJ] = BOMB
+        var randI = getRandomInt(0, size)
+        var randJ = getRandomInt(0, size)
+        board[randI][randJ] = BOMB
 
-    // }
+    }
 
     return board
 }
