@@ -4,7 +4,7 @@ var FLOOR = '🔲'
 
 
 function buildBoard() {
-    const size = 4
+    const size = gLevel.SIZE
     const board = []
 
     for (let i = 0; i < size; i++) {
@@ -15,6 +15,16 @@ function buildBoard() {
     }
     board[1][1] = BOMB
     board[1][2] = BOMB
+
+
+    // for (let i = 0; i < gLevel.MINES; i++) {
+
+    //     var randI = getRandomInt(0, size)
+    //     var randJ = getRandomInt(0, size)
+    //     board[randI][randJ] = BOMB
+
+    // }
+
     return board
 }
 
@@ -26,20 +36,15 @@ function renderBoard(board) {
         strHTML += '<tr>'
         for (let j = 0; j < board[0].length; j++) {
 
-            const cell = board[i][j]
             const className = getClassName({ i, j })
 
-            var cellContent = ''
-            if (cell === BOMB) {
-                cellContent = BOMB
-            } else if (cell === FLOOR) {
-                cellContent = FLOOR
-            } else {
-                cellContent = cell
-            }
-            if (cellContent === 0) cellContent = FLOOR
 
-            strHTML += `<td class="${className}" onclick="onCellClicked(this, ${i}, ${j})">${cellContent}</td>`
+
+            strHTML += `<td 
+            class="${className}" 
+            onclick="onCellClicked(this, ${i}, ${j})"
+            oncontextmenu="onCellMarked(this, ${i}, ${j}); return false;"
+            >${FLOOR}</td>`
 
         }
         strHTML += '</tr>'
